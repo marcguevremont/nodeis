@@ -16,16 +16,16 @@ RUN \
   | tar xzf - --strip-components=1 --exclude="README.md" --exclude="LICENSE" \
   --exclude="ChangeLog" -C "/usr/local"
   
-#Keep to use npm install with redis and vips
-#RUN \
-#    rm -rf /var/lib/apt/lists/*
+RUN \
+ npm install pm2 -g
+ 
 
-
+RUN \
+    rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /is
 RUN mkdir /is/tmp
 RUN mkdir /is/storage 
-
 
 VOLUME /is/tmp
 VOLUME /is/storage

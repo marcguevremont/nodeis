@@ -5,4 +5,4 @@ npm install nodeis
 
 # Run the Application
 npm install
-npm start
+pm2 start -x bin/www --no-daemon
