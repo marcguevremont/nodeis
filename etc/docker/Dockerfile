@@ -27,6 +27,8 @@ RUN mkdir /is
 RUN mkdir /is/tmp
 RUN mkdir /is/storage 
 
+RUN mkdir /etc/nodeis
+
 VOLUME /is/tmp
 VOLUME /is/storage
 

@@ -1,11 +1,30 @@
 {
   "name": "nodeis",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
+  "license": "MIT",
+  "author": {
+    "name": "Marc Guevremont",
+    "email": "mg@webs7.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcguevremont/nodeis"
+  },
   "scripts": {
     "start": "node ./bin/www",
     "test": "make test"
   },
+  "keywords": [
+    "image",
+    "images",
+    "server",
+    "transform",
+    "upload",
+    "service",
+    "serve",
+    "s3"
+  ],
   "dependencies": {
     "async": "^0.9.0",
     "aws-sdk": "^2.2.1",

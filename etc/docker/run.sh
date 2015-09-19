@@ -5,4 +5,7 @@ npm install nodeis
 
 # Run the Application
 npm install
-pm2 start -x bin/www --no-daemon
+
+cp /etc/nodeis/config.js node_modules/nodeis/etc/config.js
+
+pm2 start -x node_modules/nodeis/bin/www --no-daemon
