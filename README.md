@@ -42,6 +42,9 @@ docker run -p 8080 -d --name='nodeis' webs7/nodeis
 
 
 ### Requirement
+Tested with Node v 0.12.7
+
+
 By default nodeis use vips image library. 
 See [https://github.com/lovell/sharp](https://github.com/lovell/sharp) for detail. 
 You can also use graphic magic if you want. 
