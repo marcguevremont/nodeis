@@ -1,5 +1,5 @@
 # Nodeis 
-###### Prononce (nōdĭ′iss)
+###### Prononce (nō-dĭ′iss)
 Nodeis is for Node Image Service.  It enables on-demand crop, resizing and flipping of images.
 It is inspired by Thumbor but it is not a direct port from python to nodejs. 
 Using nodeis is very easy. All you have to do is access it using an URL for an image, like this:
