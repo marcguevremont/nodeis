@@ -14,7 +14,6 @@ var config = {
 	
    /**
 	* Enable plugins
-	* https://gist.github.com/msurguy/b474b0b45825e07128f0
 	*/
 	engines : {
 		//"gm" 	 : require("../lib/engine/gm"),
@@ -53,7 +52,7 @@ var config = {
 		
 		height    : 2000,  // max height
 		
-		webp      : true,  // If header accept webp true | false | auto
+		webp      : true,  // If header accept webp true | false 
 		
 		quality   : '80',  // 100 best
 		
