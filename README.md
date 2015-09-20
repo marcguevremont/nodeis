@@ -10,9 +10,9 @@ http://localhost:8080/fetch/optional-secure-key/?src=http://any-image-url.jpg&op
 
 ###### Features
  - Auto detect webp.
- - Save original image to filesystem || S3 || Create your own storage.
+ - Save original image to filesystem || S3 || create your own storage.
  - You can fetch || upload images.
- - Build with pluggins. You can create your own easily
+ - Built with pluggins. You can create your own easily
  
 ### Version
 0.0.3
