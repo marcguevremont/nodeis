@@ -168,7 +168,7 @@ See lib/engine or lib/transport for working examples
  - Create tests
  - Add face detection via opencv
 
-### Contribute
+### Contributing
 If you want to contribute your are welcome.
 
 License
