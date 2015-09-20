@@ -28,10 +28,9 @@ cd nodeis
 ```
 ###### Run
 ```sh
-cd node_modules
+cd node_modules/nodeis
 cp etc/config.default.js etc/config.js
-//Change config port && host
-npm start
+IS_HTTP_PORT=8080 IS_HOST=http://localhost npm start
 ```
 
 Docker : 
