@@ -8,9 +8,8 @@ var path = require('path')
 var config = {
 	
 	server : {
-		url  : 'http://localhost',
-		port : 8080,
-		baseurl : 'http://localhost:8080'
+		port 	: process.env.IS_HTTP_PORT,
+		baseurl : process.env.IS_HOST +":"+process.env.IS_HTTP_PORT
 	},
 	
    /**
@@ -69,7 +68,7 @@ var config = {
 		save 	   : true, //Per request: save file or just apply change and return it 
 		
 		saveUpload : false, //Auto save upload image on post 
-	/*
+	
 		store      : {
 		
 			type   : 'file', //valid transport
@@ -80,8 +79,8 @@ var config = {
 		
 		},
 			
-		*/
-		
+	
+		/*
 		store : {
 				type   : 's3', //valid transport
 		
@@ -89,6 +88,7 @@ var config = {
 				"aws_key"     : 'your-key',
     			"aws_secret"  : 'your-secret'
 		},
+			*/
 		
 		/**
 		 * Cache settings

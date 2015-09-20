@@ -35,8 +35,12 @@ VOLUME /is/storage
 # Set the working directory
 WORKDIR   /src
 
-EXPOSE 8080
 
+ENV \
+    IS_HTTP_HOST=0.0.0.0 \
+    IS_HTTP_PORT=8080 
+
+EXPOSE 8080
 
 ADD ./run.sh /tmp/run.sh
 
