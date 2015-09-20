@@ -21,14 +21,26 @@ Via npm :
 ```sh
 npm install nodeis
 ```
+Git :
+```sh
+git clone https://github.com/marcguevremont/nodeis.git
+cd nodeis
+```
+###### Run
+```sh
+cd node_modules
+cp etc/config.default.js etc/config.js
+//Change config port && host
+npm start
+```
+
 Docker : 
 ```sh
 docker run -p 8080 -d --name='nodeis' webs7/nodeis
 ```
-Git :
-```sh
-git clone https://github.com/marcguevremont/nodeis.git
-```
+
+
+
 ### Requirement
 By default nodeis use vips image library. 
 See [https://github.com/lovell/sharp](https://github.com/lovell/sharp) for detail. 
@@ -37,10 +49,9 @@ You can also use graphic magic if you want.
 ### Config
 The configuration file is located in etc/config.default.js. Copy it and rename it config.js. 
 
-
+Config example :
 
 ```
-
 var config = {
 	
 	server : {
@@ -102,7 +113,7 @@ var config = {
 		 */
 		save 	   : true, //Per request: save file or just apply change and return it 
 		
-		saveUpload : false, //Auto save upload image on post 
+		saveUpload : false, //Save upload directly or save temp file and wait for transformation. This is to enable croping in browser like facebook profile picture.
 	
 		store      : {
 		
