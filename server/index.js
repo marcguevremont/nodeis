@@ -1,3 +1,18 @@
+/*!
+ * nodeis
+ * https://github.com/marcguevremont/nodeis
+ *
+ * Copyright 2015 Marc Guevremont
+ * Released under the MIT license
+ *
+ *
+ *  Server entry point
+ * 
+ */
+
+/**
+ * Module dependencies.
+ */
 var config = require("../etc/config");
 var express = require('express');
 var route = require('./router');
@@ -6,7 +21,14 @@ var path = require('path')
 var app = express();
 
 
-
+/**
+ * middleware
+ * Set allow origin anywhere for ajax connection
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {function} next
+ */
+ 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -14,10 +36,10 @@ app.use(function(req, res, next) {
 });
 
 
-app.use('/image', express.static(path.join(__dirname, 'tmp')));
+//app.use('/image', express.static(path.join(__dirname, 'tmp')));
 
+// Bind route object
 app.use('/', route);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

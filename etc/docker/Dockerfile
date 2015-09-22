@@ -32,19 +32,23 @@ RUN mkdir /etc/nodeis
 VOLUME /is/tmp
 VOLUME /is/storage
 
+
 # Set the working directory
 WORKDIR   /src
 
 
 ENV \
     IS_HTTP_HOST=0.0.0.0 \
-    IS_HTTP_PORT=8080 
+    IS_HTTP_PORT=8076 
 
-EXPOSE 8080
+EXPOSE 8076
 
-ADD ./run.sh /tmp/run.sh
+ADD \
+ ./run.sh /tmp/run.sh
+ 
 
-CMD ["/bin/bash", "/tmp/run.sh"]
+
+CMD ["/bin/bash"]
 #build command
 
 # run command

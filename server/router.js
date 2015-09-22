@@ -1,33 +1,31 @@
-
+/*!
+ * nodeis
+ * https://github.com/marcguevremont/nodeis
+ *
+ * Copyright 2015 Marc Guevremont
+ * Released under the MIT license
+ *
+ *
+ *  Router - Handle all requests an process it
+ * 
+ */
+ 
+/**
+ * Module dependencies.
+ */ 
 var config        = require('../etc/config');
 var express       = require('express')
 var router        = express.Router()
 var processer     = require('../lib/processer');
 var initialize    = require('./initialize');
 var utils         = require('../lib/utils');
-//var Queue         = require('bull');
 
 /**
-* Parse incoming request and apply directive to do
-* Get incoming request and return object option
-* ex : http://example.com/unsecure/resize:200,200/corner
-* ex: http://example.com/unsecure/rotate:green,-25/resize:250, 178/autoOrient
-
-
-var imageQueue = Queue('image transcoding', 6379, '127.0.0.1');
-
-imageQueue.process(function(job, done){
-
-    // job.data contains the custom data passed when the job was created
-    // job.jobId contains id of this job.
-  
-    // transcode video asynchronously and report progress
-    //job.progress(42);
-  
-});
-
-*/
-
+ * setHeaderCacheControl
+ * Set cache control in header
+ * @param {Object} req 
+ * @param {Object} res 
+ */
 function setHeaderCacheControl(req, res){
     
      if (req.query['nocache']){
@@ -39,6 +37,12 @@ function setHeaderCacheControl(req, res){
      }
 }
 
+/**
+ * checkSrc
+ * Validate url
+ * @param {Object} req 
+ * @param {Object} res 
+ */
 function checkSrc(req, res, next){
     var query = req.query;
     if (query.src)
@@ -49,6 +53,11 @@ function checkSrc(req, res, next){
         next();
 }
 
+/**
+ * Return one pixel image
+ * @param {Object} req 
+ * @param {Object} res 
+ */
 function  onepx_response(req, res){
         setHeaderCacheControl(req,res);
     	res.writeHead(200, {'Content-Type': 'image/gif'}); 
@@ -56,9 +65,12 @@ function  onepx_response(req, res){
 		res.end(new Buffer(PIXEL_B64, 'base64'), 'binary');
 }
 
+/**
+ * Return the image url from an uploaded image
+ * @param {Object} req 
+ */
 function createImageUrlfromRequest(req){
    
-    
     var u = config.server.baseurl + '/image/'+ utils.generateKey(config.options.secret, req.query['src'], req.query['_opt']) + '/';
     
     u += "?src=" + req.query.src;
@@ -71,6 +83,12 @@ function createImageUrlfromRequest(req){
     return u;
 }
 
+/**
+ * Upload image handler
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {function} next 
+ */
 router.post('/image/:key', initialize, function(req,res, next){
      req._method_ = 'image';
      
@@ -112,7 +130,13 @@ router.post('/image/:key', initialize, function(req,res, next){
       
 });
 
-router.get('/image/:key', initialize, checkSrc,  function(req,res, next){
+/**
+ * Get image handler
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {function} next 
+ */
+router.get('/image/:key', initialize, checkSrc,  function(req, res, next){
      req._method_ = 'image';
      
      new processer(req, res, function(err,img){
@@ -132,7 +156,12 @@ router.get('/image/:key', initialize, checkSrc,  function(req,res, next){
 router.delete('/image/:key', initialize, function(req,res){
 
 });
-
+/**
+ * Fetch image handler
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {function} next 
+ */
 router.get('/fetch/:key', initialize, checkSrc, function(req, res, next){
 
   req._method_ = 'fetch';
@@ -159,23 +188,16 @@ router.get('/fetch/:key', initialize, checkSrc, function(req, res, next){
 
 
 });
-
+/**
+ * One pixel handler
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {function} next 
+ */
 router.get('/onepx', function(req,res){
     
        onepx_response(req, res);
 });
 
-/*
-router.get('/upload', function(req,res){
-    res.writeHead(200, {'content-type': 'text/html'});
-     res.end(
-      '<form action="/image/jidjsdjasiudjasidjasiduad/?src='+encodeURIComponent('sadadasdsadadadadsadad/image')+'" enctype="multipart/form-data" method="post">'+
-      '<input type="text" name="title"><br>'+
-      '<input type="file" name="upload" multiple="multiple"><br>'+
-      '<input type="submit" value="Upload">'+
-      '</form>'
-    );
-});
-*/
 
 module.exports = router;
