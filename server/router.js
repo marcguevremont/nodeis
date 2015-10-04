@@ -61,7 +61,7 @@ function checkSrc(req, res, next){
 function  onepx_response(req, res){
         setHeaderCacheControl(req,res);
     	res.writeHead(200, {'Content-Type': 'image/gif'}); 
-		var PIXEL_B64  = "R0lGODlhAQABAPAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
+		var PIXEL_B64  = "R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
 		res.end(new Buffer(PIXEL_B64, 'base64'), 'binary');
 }
 

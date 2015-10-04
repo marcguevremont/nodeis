@@ -47,9 +47,10 @@ module.exports = function(req, res, next){
   var webp = false;
 
   if (config.options.webp == true){
-      
-      webp = (req.headers.accept.indexOf('webp') != -1);
-      query['opt']['webp'] = [webp];
+      if (req.headers && req.headers.accept){
+          webp = (req.headers.accept.indexOf('webp') != -1);
+          query['opt']['webp'] = [webp];
+      }
   }
   
   req.webp = webp;
