@@ -46,10 +46,9 @@ EXPOSE 8076
 ADD \
  ./run.sh /tmp/run.sh
  
-COPY \
- ./config.js /etc/nodeis/config.js
 
-CMD ["/bin/bash", "/tmp/run.sh"]
+
+CMD ["/bin/bash"]
 #build command
 
 # run command
