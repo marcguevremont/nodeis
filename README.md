@@ -15,7 +15,7 @@ http://localhost:8080/fetch/optional-secure-key/?src=http://any-image-url.jpg&op
  - Built with pluggins. You can create your own easily
  
 ### Version
-0.0.3
+0.0.5
 
 ### Installation
 Via npm :
