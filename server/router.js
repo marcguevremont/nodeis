@@ -188,11 +188,44 @@ router.get('/fetch/:key', initialize, checkSrc, function(req, res, next){
 
 
 });
+
+/**
+ * Create a snapshot of a website
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {Object} next
+ *
+**/
+router.get('/webshot/:key',initialize, checkSrc, function(req,res, next){
+     
+     req._method_ = 'webshot';
+     
+     new processer(req, res, function(err, img){
+      
+        if (err){
+         // done(err);
+          return next(err);
+        } 
+        
+        
+         // Show the image
+        
+        setHeaderCacheControl(req,res);
+         
+         if (req.format)
+            res.writeHead(200, {'Content-Type': 'image/'+ req.format });
+            
+        img.pipe(res);
+        
+    });
+     
+     
+});
+
 /**
  * One pixel handler
  * @param {Object} req 
  * @param {Object} res 
- * @param {function} next 
  */
 router.get('/onepx', function(req,res){
     

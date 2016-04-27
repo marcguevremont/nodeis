@@ -36,6 +36,15 @@ app.use(function(req, res, next) {
 });
 
 
+app.use(function(req, res, next){
+    if (req.url === '/favicon.ico') {
+        res.writeHead (200, {'Content-Type': 'image/x-icon'});
+        res.end('stupid favicon...');   
+    }
+    else
+        next();
+});
+
 //app.use('/image', express.static(path.join(__dirname, 'tmp')));
 
 // Bind route object
@@ -55,7 +64,8 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
-        console.log(err);
+        console.log(req.path)
+        console.log(err.stack);
         
         res.writeHead(res.status, {'content-type': 'text/plain'});
         res.end(err +  "\nCode:"+ err.status)

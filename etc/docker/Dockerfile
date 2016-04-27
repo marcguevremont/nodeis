@@ -6,15 +6,12 @@ MAINTAINER Marc Guevremont <mg@webs7.com>
 RUN   \
   apt-get -y -qq install python 
   
-RUN \ 
-  apt-get update \
-  && apt-get install -y -qq build-essential \ 
-  && apt-get install -y -qq wget 
 
 RUN \
   wget -O - http://nodejs.org/dist/v0.12.7/node-v0.12.7-linux-x64.tar.gz \
   | tar xzf - --strip-components=1 --exclude="README.md" --exclude="LICENSE" \
   --exclude="ChangeLog" -C "/usr/local"
+
   
 RUN \
  npm install pm2 -g
@@ -50,6 +47,9 @@ COPY \
  ./config.js /etc/nodeis/config.js
 
 CMD ["/bin/bash", "/tmp/run.sh"]
+
+#DEV
+#CMD ["/bin/bash"]
 #build command
 
 # run command

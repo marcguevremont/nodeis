@@ -30,7 +30,7 @@ module.exports = function(req, res, next){
      
      if (req.params['key'] !== challenge_key)   {
           res.writeHead(404, {'content-type': 'text/html'});
-          // console.log(challenge_key)
+         // console.log(challenge_key)
           res.end();
           return ;
      }
